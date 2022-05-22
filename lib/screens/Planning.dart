@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/widgets/navigation_drawer.dart';
 
-class PageHome extends StatelessWidget {
+class Planning extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('Accueil'),
+          title: const Text('planning'),
           centerTitle: true,
           backgroundColor: Colors.red,
         ),

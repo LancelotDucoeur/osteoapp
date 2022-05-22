@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:osteoapp/pages/page_maps.dart';
-import 'package:osteoapp/pages/page_planning.dart';
-import 'package:osteoapp/pages/page_home.dart';
-import 'package:osteoapp/pages/page_settings.dart';
-import 'package:osteoapp/pages/page_clients.dart';
+import 'package:osteoapp/screens/Maps.dart';
+import 'package:osteoapp/screens/Planning.dart';
+import 'package:osteoapp/screens/Home.dart';
+import 'package:osteoapp/screens/Settings.dart';
+import 'package:osteoapp/screens/Clients.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = const EdgeInsets.symmetric(horizontal: 20);
@@ -88,27 +88,27 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PageHome(),
+          builder: (context) => Home(),
         ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PagePlanning(),
+          builder: (context) => Planning(),
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PageClients(),
+          builder: (context) => Clients(),
         ));
         break;
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PageMaps(),
+          builder: (context) => Maps(),
         ));
         break;
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PageSettings(),
+          builder: (context) => Settings(),
         ));
         break;
       default:
