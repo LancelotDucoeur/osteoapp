@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
-  final Function(int) onChangedStep;
+  final Function(int, String) onChangedStep;
   const AuthScreen({
     Key? key,
     required this.onChangedStep,
@@ -89,7 +89,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ? null
                           : () => {
                                 if (_formKey.currentState!.validate())
-                                  {widget.onChangedStep(1)}
+                                  {widget.onChangedStep(1, _email)}
                               },
                       child: Text(
                         "continuer".toUpperCase(),
