@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/widgets/navigation_drawer.dart';
 
-class Planning extends StatelessWidget {
+class PlanningScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

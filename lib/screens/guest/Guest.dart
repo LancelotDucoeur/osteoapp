@@ -49,8 +49,10 @@ class _GuestScreenState extends State<GuestScreen> {
                       .then(
                     (value) {
                       if (value.uid != null) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
                       }
                     },
                   );

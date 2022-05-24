@@ -88,27 +88,27 @@ class NavigationDrawerWidget extends StatelessWidget {
     switch (index) {
       case 0:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Home(),
+          builder: (context) => HomeScreen(),
         ));
         break;
       case 1:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Planning(),
+          builder: (context) => PlanningScreen(),
         ));
         break;
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Clients(),
+          builder: (context) => ClientsScreen(),
         ));
         break;
       case 3:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Maps(),
+          builder: (context) => MapsScreen(),
         ));
         break;
       case 4:
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Settings(),
+          builder: (context) => SettingsScreen(),
         ));
         break;
       default:
