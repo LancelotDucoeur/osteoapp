@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/models/ClientModel.dart';
+import 'package:osteoapp/screens/Clients.dart';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddClientScreen extends StatefulWidget {
   const AddClientScreen({Key? key}) : super(key: key);
@@ -16,6 +19,18 @@ class _AddClientScreenState extends State<AddClientScreen> {
   TextEditingController addrStreetController = TextEditingController();
   TextEditingController addrCodeController = TextEditingController();
   TextEditingController addrCityController = TextEditingController();
+  ClientModel clientModel = ClientModel();
+  late SharedPreferences preferences;
+
+  @override
+  initState() {
+    super.initState();
+    init();
+  }
+
+  Future init() async {
+    preferences = await SharedPreferences.getInstance();
+  }
 
   final _formKey = GlobalKey<FormState>();
 
@@ -138,13 +153,13 @@ class _AddClientScreenState extends State<AddClientScreen> {
                             },
                           ),
                           ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text('Enregistrement...')),
                                 );
-                                ClientModel _clientModel = ClientModel(
+                                clientModel = ClientModel(
                                     firstname: firstnameController.text,
                                     lastname: lastnameController.text,
                                     tel: telController.text,
@@ -152,9 +167,34 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                     addrStreet: addrStreetController.text,
                                     addrCode: addrCodeController.text,
                                     addrCity: addrCityController.text);
-                                //String client = jsonEncode(_clientModel);
 
-                                //sharedPreferences.setString('userdata', client);
+                                List<ClientModel> clients = [];
+                                SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+
+                                List<String>? clientString =
+                                    sharedPreferences.getStringList('clients');
+
+                                if (clientString != null) {
+                                  clients = clientString
+                                      .map((client) => ClientModel.fromJson(
+                                          json.decode(client)))
+                                      .toList();
+                                }
+
+                                clients.add(clientModel);
+
+                                List<String> clientsEncoded = clients
+                                    .map(
+                                        (client) => jsonEncode(client.toJson()))
+                                    .toList();
+
+                                await sharedPreferences.setStringList(
+                                    'clients', clientsEncoded);
+
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ClientsScreen()));
                               }
                             },
                             child: const Text('Submit'),

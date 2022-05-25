@@ -25,7 +25,7 @@ class ClientDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Text(firstname),
+          child: Text(lastname),
         ),
       ),
     );
