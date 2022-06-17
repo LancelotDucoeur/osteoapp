@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return HorseDetailsScreen();
+              return HomeScreen();
             }
             return const GuestScreen();
           }
