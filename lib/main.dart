@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:osteoapp/screens/Home.dart';
+import 'package:osteoapp/screens/HorseDetails.dart';
 import 'package:osteoapp/screens/guest/Guest.dart';
 import 'package:osteoapp/screens/services/UserService.dart';
 
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return HomeScreen();
+              return HorseDetailsScreen();
             }
             return const GuestScreen();
           }
