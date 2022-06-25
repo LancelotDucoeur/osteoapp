@@ -19,6 +19,8 @@ class _AddClientScreenState extends State<AddClientScreen> {
   TextEditingController addrStreetController = TextEditingController();
   TextEditingController addrCodeController = TextEditingController();
   TextEditingController addrCityController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
   ClientModel clientModel = ClientModel();
   late SharedPreferences preferences;
 
@@ -103,6 +105,19 @@ class _AddClientScreenState extends State<AddClientScreen> {
                           TextFormField(
                             decoration: const InputDecoration(
                               border: UnderlineInputBorder(),
+                              labelText: 'E-mail',
+                            ),
+                            controller: emailController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              border: UnderlineInputBorder(),
                               labelText: 'Numéro adresse',
                             ),
                             controller: addrNumController,
@@ -160,13 +175,15 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                       content: Text('Enregistrement...')),
                                 );
                                 clientModel = ClientModel(
-                                    firstname: firstnameController.text,
-                                    lastname: lastnameController.text,
-                                    tel: telController.text,
-                                    addrNum: addrNumController.text,
-                                    addrStreet: addrStreetController.text,
-                                    addrCode: addrCodeController.text,
-                                    addrCity: addrCityController.text);
+                                  firstname: firstnameController.text,
+                                  lastname: lastnameController.text,
+                                  tel: telController.text,
+                                  addrNum: addrNumController.text,
+                                  addrStreet: addrStreetController.text,
+                                  addrCode: addrCodeController.text,
+                                  addrCity: addrCityController.text,
+                                  email: emailController.text,
+                                );
 
                                 List<ClientModel> clients = [];
                                 SharedPreferences sharedPreferences =

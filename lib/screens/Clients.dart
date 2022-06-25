@@ -111,6 +111,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
                                     addrStreet: clients[index].addrStreet,
                                     addrCode: clients[index].addrCode,
                                     addrCity: clients[index].addrCity,
+                                    email: clients[index].email,
                                   )),
                             ),
                           )
