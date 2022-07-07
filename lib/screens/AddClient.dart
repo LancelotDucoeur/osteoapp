@@ -174,16 +174,6 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                   const SnackBar(
                                       content: Text('Enregistrement...')),
                                 );
-                                clientModel = ClientModel(
-                                  firstname: firstnameController.text,
-                                  lastname: lastnameController.text,
-                                  tel: telController.text,
-                                  addrNum: addrNumController.text,
-                                  addrStreet: addrStreetController.text,
-                                  addrCode: addrCodeController.text,
-                                  addrCity: addrCityController.text,
-                                  email: emailController.text,
-                                );
 
                                 List<ClientModel> clients = [];
                                 SharedPreferences sharedPreferences =
@@ -198,6 +188,24 @@ class _AddClientScreenState extends State<AddClientScreen> {
                                           json.decode(client)))
                                       .toList();
                                 }
+                                int idTop = 0;
+
+                                for (var i = 0; i < clients.length; i++) {
+                                  if (idTop < clients[i].id)
+                                    idTop = clients[i].id;
+                                }
+
+                                clientModel = ClientModel(
+                                  id: idTop + 1,
+                                  firstname: firstnameController.text,
+                                  lastname: lastnameController.text,
+                                  tel: telController.text,
+                                  addrNum: addrNumController.text,
+                                  addrStreet: addrStreetController.text,
+                                  addrCode: addrCodeController.text,
+                                  addrCity: addrCityController.text,
+                                  email: emailController.text,
+                                );
 
                                 clients.add(clientModel);
 
