@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:osteoapp/models/ClientModel.dart';
 import 'package:osteoapp/models/MeetingModel.dart';
+import 'package:osteoapp/screens/AddMeeting.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:osteoapp/widgets/navigation_drawer.dart';
 
@@ -10,16 +15,27 @@ class PlanningScreen extends StatefulWidget {
 
 class _PlanningScreenState extends State<PlanningScreen> {
   List<MeetingModel> meetings = <MeetingModel>[];
+  List<ClientModel> clients = <ClientModel>[];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    final DateTime today = DateTime.now();
-    final DateTime startTime = DateTime(today.year, today.month, today.day, 9);
-    final DateTime endTime = startTime.add(const Duration(hours: 2));
-    meetings.add(MeetingModel(0, 'Conference', 'Parler de ma bite ', startTime,
-        endTime, const Color(0xFF0F8644), false));
+    init();
+  }
+
+  Future init() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    List<String>? meetingString = sharedPreferences.getStringList('meetings');
+    if (meetingString != null) {
+      print(meetingString);
+      setState(() {
+        //CONVERT LIST<STRING> IN LIST<MODELCLIENT>
+        meetings = meetingString
+            .map((meeting) => MeetingModel.fromJson(json.decode(meeting)))
+            .toList();
+      });
+    }
   }
 
   @override
@@ -33,7 +49,12 @@ class _PlanningScreenState extends State<PlanningScreen> {
             backgroundColor: Colors.red,
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AddMeetingScreen()))
+            },
             child: Icon(Icons.add),
           ),
           body: SfCalendar(
@@ -53,18 +74,18 @@ class _PlanningScreenState extends State<PlanningScreen> {
 class MeetingDataSource extends CalendarDataSource {
   /// Creates a meeting data source, which used to set the appointment
   /// collection to the calendar
-  MeetingDataSource(List<MeetingModel> source) {
+  MeetingDataSource(List<MeetingModel>? source) {
     appointments = source;
   }
 
   @override
   DateTime getStartTime(int index) {
-    return _getMeetingData(index).dateStart;
+    return DateTime.parse(_getMeetingData(index).dateStart);
   }
 
   @override
   DateTime getEndTime(int index) {
-    return _getMeetingData(index).dateStop;
+    return DateTime.parse(_getMeetingData(index).dateStop);
   }
 
   @override
@@ -74,12 +95,7 @@ class MeetingDataSource extends CalendarDataSource {
 
   @override
   Color getColor(int index) {
-    return _getMeetingData(index).color;
-  }
-
-  @override
-  bool isAllDay(int index) {
-    return _getMeetingData(index).isAllDay;
+    return Color(_getMeetingData(index).color);
   }
 
   @override
@@ -102,7 +118,7 @@ class MeetingDataSource extends CalendarDataSource {
 /// information about the event data which will be rendered in calendar.
 class Meeting {
   /// Creates a meeting class with required details.
-  Meeting(this.eventName, this.from, this.to, this.background, this.isAllDay);
+  Meeting(this.eventName, this.from, this.to, this.background);
 
   /// Event name which is equivalent to subject property of [Appointment].
   String eventName;
@@ -115,7 +131,4 @@ class Meeting {
 
   /// Background which is equivalent to color property of [Appointment].
   Color background;
-
-  /// IsAllDay which is equivalent to isAllDay property of [Appointment].
-  bool isAllDay;
 }

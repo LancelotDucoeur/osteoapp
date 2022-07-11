@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/models/ClientModel.dart';
 import 'package:osteoapp/screens/Clients.dart';
+import 'package:osteoapp/screens/Planning.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -68,7 +69,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                               border: UnderlineInputBorder(),
                               labelText: 'Nom',
                             ),
-                            controller: firstnameController,
+                            controller: lastnameController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter some text';
@@ -81,7 +82,7 @@ class _AddClientScreenState extends State<AddClientScreen> {
                               border: UnderlineInputBorder(),
                               labelText: 'Prénom',
                             ),
-                            controller: lastnameController,
+                            controller: firstnameController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter some text';

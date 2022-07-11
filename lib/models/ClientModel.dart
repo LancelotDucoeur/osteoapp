@@ -1,5 +1,3 @@
-import 'package:osteoapp/models/MeetingModel.dart';
-
 class ClientModel {
   int id;
   String firstname;
@@ -10,7 +8,6 @@ class ClientModel {
   String addrCode;
   String addrCity;
   String email;
-  // final List<MeetingModel> meetings;
 
   ClientModel({
     this.id = -1,
@@ -22,7 +19,6 @@ class ClientModel {
     this.addrCode = '',
     this.addrCity = '',
     this.email = '',
-//    this.meetings,
   });
 
   static ClientModel fromJson(Map<String, dynamic> json) => ClientModel(
@@ -35,7 +31,6 @@ class ClientModel {
         addrCode: json['addrCode'],
         addrCity: json['addrCity'],
         email: json['email'],
-        //   meetings: json['meetings']
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,12 +43,10 @@ class ClientModel {
         'addrCode': addrCode,
         'addrCity': addrCity,
         'email': email,
-        // 'meetings': meetings,
       };
 
   @override
   String toString() {
-    // String tmp = meetings[meetings.length].name;
-    return '"clients" : { "id": $id "firstname": $firstname, "lastname": $lastname, "tel": $tel, "addrNum": $addrNum, "addrStreet": $addrStreet, "addrCode": $addrCode, "addrCity": $addrCity, "email": $email}, Meetings: {}';
+    return '"clients" : { "id": $id "firstname": $firstname, "lastname": $lastname, "tel": $tel, "addrNum": $addrNum, "addrStreet": $addrStreet, "addrCode": $addrCode, "addrCity": $addrCity, "email": $email}';
   }
 }

@@ -57,7 +57,6 @@ class _ClientsScreenState extends State<ClientsScreen> {
   //LOAD CLIENTS
   Future init() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-
     List<String>? clientString = sharedPreferences.getStringList('clients');
     if (clientString != null) {
       setState(() {

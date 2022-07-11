@@ -1,18 +1,24 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class MeetingModel {
   int id;
+  int idClient;
   String name;
   String description;
-  DateTime dateStart;
-  DateTime dateStop;
-  Color color;
-  bool isAllDay;
+  String dateStart;
+  String dateStop;
+  int color;
 
-  MeetingModel(this.id, this.name, this.description, this.dateStart,
-      this.dateStop, this.color, this.isAllDay);
+  MeetingModel({
+    this.id = -1,
+    this.idClient = -1,
+    this.name = '',
+    this.description = '',
+    required this.dateStart,
+    required this.dateStop,
+    this.color = -1,
+  });
 
-/*
   static MeetingModel fromJson(Map<String, dynamic> json) => MeetingModel(
         id: json['id'],
         idClient: json['idClient'],
@@ -20,6 +26,7 @@ class MeetingModel {
         description: json['description'],
         dateStart: json['dateStart'],
         dateStop: json['dateStop'],
+        color: json['color'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,10 +36,11 @@ class MeetingModel {
         'description': description,
         'dateStart': dateStart,
         'dateStop': dateStop,
+        'color': color,
       };
 
   @override
   String toString() {
     return '"clients" : { "id": $id, "idClient": $idClient "name": $name, "description": $description, "dateStart": $dateStart, "dateStop": $dateStop}';
-  }*/
+  }
 }
