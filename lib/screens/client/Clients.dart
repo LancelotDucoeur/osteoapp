@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:osteoapp/screens/AddClient.dart';
-import 'package:osteoapp/screens/ClientDetails.dart';
+import 'package:osteoapp/screens/client/AddClient.dart';
+import 'package:osteoapp/screens/client/ClientDetails.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/ClientModel.dart';
-import '../widgets/navigation_drawer.dart';
+import '../../models/ClientModel.dart';
+import '../../widgets/navigation_drawer.dart';
 
 class ClientsScreen extends StatefulWidget {
   const ClientsScreen({Key? key}) : super(key: key);
@@ -81,7 +81,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: const NavigationDrawerWidget(),
+        drawer: NavigationDrawerWidget(),
         appBar: AppBar(
           title: const Text('Clients'),
           centerTitle: true,

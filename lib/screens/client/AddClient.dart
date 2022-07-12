@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/models/ClientModel.dart';
-import 'package:osteoapp/screens/Clients.dart';
-import 'package:osteoapp/screens/Planning.dart';
+import 'package:osteoapp/screens/client/Clients.dart';
+import 'package:osteoapp/screens/planning/Planning.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 

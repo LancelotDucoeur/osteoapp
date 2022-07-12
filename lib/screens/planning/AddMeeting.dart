@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:osteoapp/models/ClientModel.dart';
 import 'package:osteoapp/models/MeetingModel.dart';
-import 'package:osteoapp/screens/Planning.dart';
+import 'package:osteoapp/screens/planning/Planning.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddMeetingScreen extends StatefulWidget {

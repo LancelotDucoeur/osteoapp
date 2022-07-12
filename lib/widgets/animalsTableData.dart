@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:osteoapp/models/AnimalModel.dart';
+import 'package:osteoapp/screens/animal/AnimalManagement.dart';
+import 'package:osteoapp/screens/animal/HorseDetails.dart';
 
 class AnimalsTableDataWidget extends StatefulWidget {
   const AnimalsTableDataWidget({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class _AnimalsTableDataWidgetState extends State<AnimalsTableDataWidget> {
   bool isAscending = false;
 
   List<AnimalModel> animals = [
-    AnimalModel(name: "toto", type: "cheval", age: "3"),
+    AnimalModel(name: "toto", type: "horse", age: "3"),
     AnimalModel(name: "dupont", type: "chien", age: "5"),
   ];
   @override
@@ -45,7 +47,12 @@ class _AnimalsTableDataWidgetState extends State<AnimalsTableDataWidget> {
         return DataRow(
           cells: getCells(cells),
           onSelectChanged: (selected) {
-            print(cells);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: ((context) =>
+                    AnimalManagementScreen(animalModel: animal)),
+              ),
+            );
           },
         );
       }).toList();

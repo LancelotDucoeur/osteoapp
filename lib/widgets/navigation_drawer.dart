@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:osteoapp/screens/Maps.dart';
-import 'package:osteoapp/screens/Planning.dart';
+import 'package:osteoapp/screens/maps/Maps.dart';
+import 'package:osteoapp/screens/planning/Planning.dart';
 import 'package:osteoapp/screens/Home.dart';
-import 'package:osteoapp/screens/Settings.dart';
-import 'package:osteoapp/screens/Clients.dart';
+import 'package:osteoapp/screens/settings/Settings.dart';
+import 'package:osteoapp/screens/client/Clients.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = const EdgeInsets.symmetric(horizontal: 20);
@@ -19,11 +19,11 @@ class NavigationDrawerWidget extends StatelessWidget {
         child: Material(
             color: const Color.fromRGBO(50, 75, 205, 1),
             child: ListView(padding: padding, children: <Widget>[
-              buildHeader(
+              /* buildHeader(
                 urlImage: urlImage,
                 name: name,
                 email: email,
-              ),
+              ),*/
               const Divider(color: Colors.white70),
               const SizedBox(
                 height: 16,
