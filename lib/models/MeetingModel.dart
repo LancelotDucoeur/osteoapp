@@ -41,6 +41,6 @@ class MeetingModel {
 
   @override
   String toString() {
-    return '"clients" : { "id": $id, "idClient": $idClient "name": $name, "description": $description, "dateStart": $dateStart, "dateStop": $dateStop}';
+    return '"meeting" : { "id": $id, "idClient": $idClient "name": $name, "description": $description, "dateStart": $dateStart, "dateStop": $dateStop}';
   }
 }

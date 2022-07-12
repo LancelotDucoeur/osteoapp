@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:osteoapp/models/AnimalModel.dart';
 import 'package:osteoapp/widgets/animalsTableData.dart';
 
 class ClientDetailsScreen extends StatelessWidget {
