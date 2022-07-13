@@ -42,10 +42,10 @@ class _AddClientScreenState extends State<AddClientScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Ajouter client'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-        ),
+            title: Text(
+          'Ajouter client',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        )),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.only(

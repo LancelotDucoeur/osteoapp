@@ -83,10 +83,10 @@ class _ClientsScreenState extends State<ClientsScreen> {
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('Clients'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-        ),
+            title: Text(
+          'Clients',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        )),
         body: Center(
           child: clients.isEmpty
               ? const Center(

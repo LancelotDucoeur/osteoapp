@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class HeadHorse extends CustomPainter {
+  bool test = false;
   Path headPath = Path();
   @override
   void paint(Canvas canvas, Size size) {
@@ -28,6 +29,20 @@ class HeadHorse extends CustomPainter {
     headPath.close();
 
     canvas.drawPath(headPath, headPaint);
+    if (test) {
+      final paint = Paint();
+      paint.style = PaintingStyle.stroke;
+      paint.strokeWidth = 1;
+      paint.color = Color(0xffff0000);
+      canvas.drawLine(
+          new Offset(size.width * 0.1822222, size.height * 0.1140000),
+          new Offset(size.width * 0.2122222, size.height * 0.2160000),
+          paint);
+      canvas.drawLine(
+          new Offset(size.width * 0.2155556, size.height * 0.0980000),
+          new Offset(size.width * 0.1811111, size.height * 0.2280000),
+          paint);
+    }
   }
 
   @override

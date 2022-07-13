@@ -21,8 +21,10 @@ class _AddMeetingScreenState extends State<AddMeetingScreen> {
 
   List<ClientModel> clients = [];
   ClientModel _selectedClient = ClientModel();
-  DateTime dateTimeStart = DateTime(2022, 12, 24, 5, 30);
-  DateTime dateTimeStop = DateTime(2022, 12, 24);
+  DateTime dateTimeStart = DateTime.now();
+  DateTime dateTimeStop = DateTime.now().add(
+    Duration(hours: 1, minutes: 30),
+  );
   Color colorPick = Color(0xff0000FF);
 
   late SharedPreferences preferences;
@@ -65,10 +67,10 @@ class _AddMeetingScreenState extends State<AddMeetingScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Ajouter rendez-vous'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-        ),
+            title: Text(
+          'Ajouter rendez-vous',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        )),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.only(

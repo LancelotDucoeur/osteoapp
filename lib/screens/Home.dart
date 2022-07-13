@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:osteoapp/models/MeetingModel.dart';
 import 'package:osteoapp/widgets/navigation_drawer.dart';
@@ -45,9 +46,10 @@ class _HomeState extends State<HomeScreen> {
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('Accueil'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
+          title: Text(
+            'Accueil',
+            style: Theme.of(context).appBarTheme.titleTextStyle,
+          ),
         ),
         body: Center(
           child: meetings.isEmpty

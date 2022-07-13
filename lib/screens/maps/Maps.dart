@@ -103,10 +103,10 @@ class _MapsScreenState extends State<MapsScreen> {
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('Maps'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-        ),
+            title: Text(
+          'Maps',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        )),
         body: GoogleMap(
           mapType: MapType.hybrid,
           initialCameraPosition: initialLocation,

@@ -44,10 +44,10 @@ class _PlanningScreenState extends State<PlanningScreen> {
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('planning'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
-        ),
+            title: Text(
+          'planning',
+          style: Theme.of(context).appBarTheme.titleTextStyle,
+        )),
         floatingActionButton: FloatingActionButton(
           onPressed: () => {
             Navigator.push(
@@ -58,6 +58,7 @@ class _PlanningScreenState extends State<PlanningScreen> {
           child: Icon(Icons.add),
         ),
         body: SfCalendar(
+          firstDayOfWeek: 1,
           view: CalendarView.week,
           dataSource: MeetingDataSource(this.meetings),
           // by default the month appointment display mode set as Indicator, we can

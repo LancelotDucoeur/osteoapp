@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:osteoapp/screens/guest/Guest.dart';
 import 'package:osteoapp/screens/services/UserService.dart';
@@ -20,22 +21,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Scaffold(
         drawer: NavigationDrawerWidget(),
         appBar: AppBar(
-          title: const Text('Paramètres'),
-          centerTitle: true,
-          backgroundColor: Colors.red,
+          title: Text(
+            'Paramètres',
+            style: Theme.of(context).appBarTheme.titleTextStyle,
+          ),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              await _userService.logout();
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  await _userService.logout();
 
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const GuestScreen()),
-                (route) => false,
-              );
-            },
-            child: Text("Déconnexion"),
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GuestScreen()),
+                    (route) => false,
+                  );
+                },
+                child: Text("Déconnexion"),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Changer le thème'),
+              ),
+            ],
           ),
         ),
       ),
